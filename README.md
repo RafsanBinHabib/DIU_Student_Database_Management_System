@@ -21,7 +21,7 @@ The system is designed to:
 
 The database is fully normalized and enforces referential integrity using primary and foreign key constraints.
 
----
+
 
 ## 🏗 Database Design
 
@@ -36,7 +36,7 @@ The database is fully normalized and enforces referential integrity using primar
 - **Works_On** (Junction Table)
 - **Teaches** (Junction Table)
 
----
+
 
 ## 🧠 Key Concepts Applied
 
@@ -51,7 +51,7 @@ The database is fully normalized and enforces referential integrity using primar
 - Many-to-Many Relationship Handling
 - Data Integrity Enforcement
 
----
+
 
 ## 🗃 Database Schema Highlights
 
@@ -61,7 +61,7 @@ The database is fully normalized and enforces referential integrity using primar
 - Teachers are assigned to courses
 - Junction tables are used to resolve many-to-many relationships
 
----
+
 
 ## 🛠 Technologies Used
 
@@ -69,7 +69,7 @@ The database is fully normalized and enforces referential integrity using primar
 - MySQL
 - Relational Database Concepts
 
----
+
 
 ## 🎯 Learning Outcomes
 
@@ -79,14 +79,7 @@ The database is fully normalized and enforces referential integrity using primar
 - Query optimization awareness
 - Real-world problem-solving using structured data
 
----
 
-## 🏆 Academic Context
-
-This project was completed as part of the DBMS course (CIS222) at Daffodil International University.
-It was designed to simulate real academic data management scenarios and competition-style query solving.
-
----
  
 ## 📬 Contact
 
