@@ -71,12 +71,11 @@ The database is fully normalized and enforces referential integrity using primar
 
 ## 🎯 Learning Outcomes
 
-Through this project, I developed:
--Strong understanding of relational database design
--Hands-on experience with SQL (DDL & DML)
--Practical implementation of normalization techniques
--Query optimization awareness
--Real-world problem-solving using structured data
+- Strong understanding of relational database design
+- Hands-on experience with SQL (DDL & DML)
+- Practical implementation of normalization techniques
+- Query optimization awareness
+- Real-world problem-solving using structured data
 
 ---
 
@@ -90,4 +89,6 @@ It was designed to simulate real academic data management scenarios and competit
 ## 📬 Contact
 
 - [LinkedIn profile](https://www.linkedin.com/in/rafsanbinhabib23/)
-- [Medium profile](https://medium.com/@rafsanbinhabib23)
+- [Read my Blogs](https://medium.com/@rafsanbinhabib23)
+
+---
