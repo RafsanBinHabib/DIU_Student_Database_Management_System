@@ -1,5 +1,7 @@
 # 🎓 DIU Student Database Management System
 
+📝 [Documentation](https://github.com/RafsanBinHabib/DIU_Student_Database_Management_System/blob/a099459264efd4d20521c0d62b13dae4f93a2597/232-16-052_DBMS_Spring-25.pdf)
+
 A fully designed and implemented relational database system built as part of the Database Management System (DBMS) course (CIS222) – Spring 2025.
 
 This project simulates a real-world university database system to manage students, faculty, courses, teachers, and academic projects using SQL.
