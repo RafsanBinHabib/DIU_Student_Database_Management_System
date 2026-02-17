@@ -1,0 +1,147 @@
+CREATE TABLE STUDENT (
+    sid VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100),
+    dob DATE,
+    age INT,
+    city VARCHAR(100),
+    district VARCHAR(100),
+    cgpa FLOAT CHECK (cgpa BETWEEN 0.00 AND 4.00)
+);
+
+CREATE TABLE FACULTY (
+    fid VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+);
+
+CREATE TABLE PROJECT (
+    pid VARCHAR(30) PRIMARY KEY,
+    title VARCHAR(255)
+);
+
+CREATE TABLE TEACHER (
+    tid VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(50) UNIQUE,
+    phone VARCHAR(15),
+    room_no VARCHAR(10),
+    floor VARCHAR(10)
+);
+
+CREATE TABLE COURSE (
+    cid VARCHAR(20) PRIMARY KEY,
+    cname VARCHAR(60),
+    credit INT CHECK (credit BETWEEN 1 AND 4),
+    has_theory BOOLEAN,
+    teacher_id VARCHAR(20),  
+    FOREIGN KEY (teacher_id) REFERENCES TEACHER(tid) ON DELETE SET NULL
+);
+
+CREATE TABLE WORKS_ON (
+    student_id VARCHAR(20),
+    project_id VARCHAR(30),
+    PRIMARY KEY (student_id, project_id),
+    FOREIGN KEY (student_id) REFERENCES STUDENT(sid) ON DELETE CASCADE,
+    FOREIGN KEY (project_id) REFERENCES PROJECT(pid) ON DELETE CASCADE
+);
+
+CREATE TABLE ENROLLS (
+    student_id VARCHAR(20),
+    course_id VARCHAR(20),
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES STUDENT(sid) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES COURSE(cid) ON DELETE CASCADE
+);
+
+CREATE TABLE TEACHES (
+    teacher_id VARCHAR(20),
+    course_id VARCHAR(20),
+    PRIMARY KEY (teacher_id, course_id),
+    FOREIGN KEY (teacher_id) REFERENCES TEACHER(tid) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES COURSE(cid) ON DELETE CASCADE
+);
+
+INSERT INTO STUDENT (sid, name, dob, age, city, district, cgpa) VALUES
+('232-16-052', 'Rafsan Bin Habib', '2000-01-01', 25, 'Dhaka', 'Dhaka', 3.80),
+('232-16-050', 'Jobair Hassan', '2001-03-12', 24, 'Chittagong', 'Chattogram', 3.85),
+('232-16-049', 'Tanzimul Islam', '2002-06-15', 23, 'Sylhet', 'Sylhet', 3.75),
+('232-16-063', 'Rakibul Islam', '2001-10-22', 24, 'Rajshahi', 'Rajshahi', 3.90),
+('232-16-051', 'Rokon Al Hasan', '2000-11-11', 25, 'Barishal', 'Barishal', 3.65),
+('232-16-047', 'A.F.M. Shah Arefin Atiq', '2001-01-25', 24, 'Khulna', 'Khulna', 4.00),
+('232-16-045', 'Aowlad Hasan', '2002-04-30', 23, 'Mymensingh', 'Mymensingh', 3.95),
+('232-16-042', 'Mushfiqul Islam Ruhit', '2000-08-19', 25, 'Cumilla', 'Cumilla', 3.70),
+('232-16-044', 'Tusher', '2002-12-09', 23, 'Rangpur', 'Rangpur', 3.50);
+
+INSERT INTO FACULTY (fid, name, age) VALUES
+('710002852', 'Dr. Mahmud Hossain', 50),
+('710002765', 'Dr. Nazneen Sultana', 47),
+('710002853', 'Dr. Zia Uddin', 52),
+('710002890', 'Dr. Amina Khatun', 45),
+('710002845', 'Dr. Khalid Mahmud', 49),
+('710002848', 'Dr. Rina Alam', 43),
+('710002879', 'Dr. Tariq Hasan', 55),
+('710002789', 'Dr. Saima Rahman', 48),
+('710002836', 'Dr. Arif Chowdhury', 51);
+
+INSERT INTO TEACHER (tid, name, email, phone, room_no, floor) VALUES
+('1', 'Mr. Imran Hossain', 'imran@diu.edu', '01710000001', '101A', '1'),
+('2', 'Ms. Jannat Ara', 'jannat@diu.edu', '01710000002', '102B', '1'),
+('3', 'Mr. Rezaul Karim', 'rezaul@diu.edu', '01710000003', '203A', '2'),
+('4', 'Ms. Shirin Akter', 'shirin@diu.edu', '01710000004', '204B', '2'),
+('5', 'Mr. Kamrul Islam', 'kamrul@diu.edu', '01710000005', '305A', '3'),
+('6', 'Ms. Tanzina Rahman', 'tanzina@diu.edu', '01710000006', '306B', '3'),
+('7', 'Mr. Nayeem Ahmed', 'nayeem@diu.edu', '01710000007', '407A', '4'),
+('8', 'Ms. Tania Sultana', 'tania@univ.edu', '01710000008', '408B', '4'),
+('9', 'Mr. Wasim Hasan', 'wasim@univ.edu', '01710000009', '509A', '5');
+
+INSERT INTO COURSE (cid, cname, credit, has_theory, teacher_id) VALUES
+('CIS224', 'Data Structures', 3, 1, 1),
+('CIS115', 'Structured Programming', 3, 1, 1),
+('CIS132', 'Algorithms', 3, 1, 2),
+('CIS222', 'Database Systems', 3, 1, 3),
+('CIS232', 'Operating Systems', 4, 1, 4),
+('CIS211', 'Computer Networks', 3, 1, 5),
+('CIS313', 'Artificial Intelligence', 3, 1, 6),
+('CIS223', 'Machine Learning', 3, 1, 7),
+('CIS235', 'Software Engineering', 3, 1, 8),
+('CIS133', 'Web Development', 3, 0, 9);
+
+INSERT INTO PROJECT (pid, title) VALUES
+('P1', 'Smart Library System'),
+('P2', 'AI in Healthcare'),
+('P3', 'Blockchain Voting System'),
+('P4', 'Weather Forecasting App'),
+('P5', 'Voice Controlled Home'),
+('P6', 'E-Commerce Recommendation'),
+('P7', 'Bangla OCR Tool'),
+('P8', 'Cyber Security Scanner'),
+('P9', 'Social Media Sentiment Analysis');
+
+INSERT INTO WORKS_ON (student_id, project_id) VALUES
+('232-16-052', 'P2'), ('232-16-050', 'P2'),
+('232-16-042', 'P3'), ('232-16-044', 'P3'),
+('232-16-045', 'P4'), ('232-16-047', 'P4'),
+('232-16-049', 'P5'), ('232-16-051', 'P5'),
+('232-16-063', 'P6'), ('232-16-052', 'P6'),
+('232-16-050', 'P7'), ('232-16-042', 'P7'),
+('232-16-044', 'P8'), ('232-16-045', 'P8'),
+('232-16-047', 'P9'), ('232-16-049', 'P9'),
+('232-16-051', 'P1'), ('232-16-063', 'P1');
+
+INSERT INTO ENROLLS (student_id, course_id) VALUES
+('232-16-052', 'CIS222'), ('232-16-052', 'CIS223'), ('232-16-052', 'CIS224'),
+('232-16-050', 'CIS222'), ('232-16-050', 'CIS232'),
+('232-16-042', 'CIS223'), ('232-16-042', 'CIS235'),
+('232-16-044', 'CIS224'), ('232-16-044', 'CIS211'),
+('232-16-045', 'CIS232'), ('232-16-045', 'CIS313'),
+('232-16-047', 'CIS235'), ('232-16-047', 'CIS133'),
+('232-16-049', 'CIS211'), ('232-16-049', 'CIS132'),
+('232-16-051', 'CIS313'), ('232-16-051', 'CIS222'),
+('232-16-063', 'CIS133'), ('232-16-063', 'CIS223');
+
+INSERT INTO TEACHES (teacher_id, course_id) VALUES
+('1', 'CIS222'), ('2', 'CIS223'),
+('3', 'CIS224'), ('4', 'CIS132'),
+('5', 'CIS232'), ('6', 'CIS211'),
+('7', 'CIS313'), ('8', 'CIS235'),
+('9', 'CIS133');
